@@ -61,11 +61,29 @@ def move():
             'attack_moves': [[x-1, y], [x-2, y], [x-3, y]],
         },  
     }
-       
+
+    def hitNearest(mybot):
+        x=mybot['x']
+        y=mybot['y']
+        d1=[x+1,y]
+        d2=[x+2,y]
+        d3=[x+3,y]
+        for i range(-3,3):
+            if i==0:
+                pass
+            if [[x+i],y] in bots_state:
+                return 'T'
+            elif [x,y+i] in bots_state:
+                return 'T'
+
     if amIHit=='True': #escape the block
         return 'F'
+    else:
+        hitNearest(mybot)
+        
     
     # func to throw water and attack
+    
     for player in bots_state:
         x,y=bots_state[player]
         dirc = bots_state[player]['direction']
@@ -97,6 +115,7 @@ def move():
             else:
                 mybot['direction']=direc
                 return 'T'
+                
 
     return moves[random.randrange(len(moves))]
 
