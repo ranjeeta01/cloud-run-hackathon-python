@@ -62,6 +62,8 @@ def move():
         },  
     }
 
+    escape_moves=['F', 'T', 'L', 'R']
+
     def hitNearest(mybot):
         x=mybot['x']
         y=mybot['y']
@@ -80,6 +82,7 @@ def move():
         return 'F'
     else:
         hitNearest(mybot)
+        return escape_moves[random.randrange(len(escape_moves))]
         
     
     # func to throw water and attack
