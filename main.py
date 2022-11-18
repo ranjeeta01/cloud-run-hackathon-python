@@ -75,7 +75,21 @@ def move():
                 mybot['direction']=direc
                 return 'T'
         
-        if mybot['x']==x and [x,abs(y+mybot['y'])] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same row opp direc and attack dist
+        elif mybot['x']==x and [x,abs(y+mybot['y'])] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same row opp direc and attack dist
+            if mybot['direction']==direc:
+                return 'T'
+            else:
+                mybot['direction']=direc
+                return 'T'
+
+        elif mybot['y']==y and [abs(x+mybot['x']),y] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same column opp direc and attack dist
+            if mybot['direction']==direc:
+                return 'T'
+            else:
+                mybot['direction']=direc
+                return 'T'
+
+        elif mybot['y']==y and [abs(x-mybot['x']),y] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same column and attack dist
             if mybot['direction']==direc:
                 return 'T'
             else:
