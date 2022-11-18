@@ -112,8 +112,8 @@ def move():
     if amIHit=='True': #escape the block
         return 'F'
     else:
-        #hitNearest(mybot)
-        attackFunc(mybot, bots_state)
+        hitNearest(mybot)
+        #attackFunc(mybot, bots_state)
         return escape_moves[random.randrange(len(escape_moves))]
         
     
