@@ -84,40 +84,40 @@ def move():
     
     # func to throw water and attack
     
-    for player in bots_state:
-        x,y=bots_state[player]
-        dirc = bots_state[player]['direction']
+#    for player in bots_state:
+#        x,y=bots_state[player]
+#        dirc = bots_state[player]['direction']
 
-        if mybot['x']==x and [x,abs(y-mybot['y'])] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same row and attack dist
-            if mybot['direction']==direc:
-                return 'T'
-            else:
-                mybot['direction']=direc
-                return 'T'
+#        if mybot['x']==x and [x,abs(y-mybot['y'])] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same row and attack dist
+#            if mybot['direction']==direc:
+#                return 'T'
+#            else:
+#                mybot['direction']=direc
+#                return 'T'
         
-        elif mybot['x']==x and [x,abs(y+mybot['y'])] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same row opp direc and attack dist
-            if mybot['direction']==direc:
-                return 'T'
-            else:
-                mybot['direction']=direc
-                return 'T'
+#        elif mybot['x']==x and [x,abs(y+mybot['y'])] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same row opp direc and attack dist
+#            if mybot['direction']==direc:
+#                return 'T'
+#            else:
+#                mybot['direction']=direc
+#                return 'T'
 
-        elif mybot['y']==y and [abs(x+mybot['x']),y] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same column opp direc and attack dist
-            if mybot['direction']==direc:
-                return 'T'
-            else:
-                mybot['direction']=direc
-                return 'T'
+#        elif mybot['y']==y and [abs(x+mybot['x']),y] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same column opp direc and attack dist
+#           if mybot['direction']==direc:
+#                return 'T'
+#            else:
+#                mybot['direction']=direc
+#                return 'T'
 
-        elif mybot['y']==y and [abs(x-mybot['x']),y] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same column and attack dist
-            if mybot['direction']==direc:
-                return 'T'
-            else:
-                mybot['direction']=direc
-                return 'T'
+#        elif mybot['y']==y and [abs(x-mybot['x']),y] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same column and attack dist
+#            if mybot['direction']==direc:
+#                return 'T'
+#            else:
+#                mybot['direction']=direc
+#                return 'T'
                 
 
-    return moves[random.randrange(len(moves))]
+#    return moves[random.randrange(len(moves))]
 
 if __name__ == "__main__":
   app.run(debug=False,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
