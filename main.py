@@ -109,12 +109,13 @@ def move():
             elif [x,y+i] in bots_state:
                 return 'T'
 
-    if amIHit=='True': #escape the block
-        return 'F'
-    else:
+    while amIHit=='True': #escape the block
+        #players_state[mybot_link]["wasHit"]
+        return escape_moves[random.randrange(len(escape_moves))]
+
+    while amIHit=='False':
         hitNearest(mybot)
         #attackFunc(mybot, bots_state)
-        return escape_moves[random.randrange(len(escape_moves))]
         
     
     # func to throw water and attack            
