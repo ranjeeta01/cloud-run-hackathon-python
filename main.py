@@ -111,7 +111,9 @@ def move():
 
     while amIHit=='True': #escape the block
         #players_state[mybot_link]["wasHit"]
-        return escape_moves[random.randrange(len(escape_moves))]
+        return 'T' 
+    
+    escape_moves[random.randrange(len(escape_moves))]
 
     while amIHit=='False':
         hitNearest(mybot)
