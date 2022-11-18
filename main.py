@@ -31,7 +31,38 @@ def index():
 
 
 
-def checkNearestPlayer():
+def attackFunc(mybot, bots_state):
+        for player in bots_state:
+        x,y=bots_state[player]
+        direc = bots_state[player]['direction']
+
+        if mybot['x']==x and [x,abs(y-mybot['y'])] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same row and attack dist
+            if mybot['direction']==direc:
+                return 'T'
+            else:
+                mybot['direction']=direc
+                return 'T'
+        
+        elif mybot['x']==x and [x,abs(y+mybot['y'])] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same row opp direc and attack dist
+            if mybot['direction']==direc:
+                return 'T'
+            else:
+                mybot['direction']=direc
+                return 'T'
+
+        elif mybot['y']==y and [abs(x+mybot['x']),y] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same column opp direc and attack dist
+           if mybot['direction']==direc:
+                return 'T'
+            else:
+                mybot['direction']=direc
+                return 'T'
+
+        elif mybot['y']==y and [abs(x-mybot['x']),y] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same column and attack dist
+            if mybot['direction']==direc:
+                return 'T'
+            else:
+                mybot['direction']=direc
+                return 'T'
 
 @app.route("/", methods=['POST'])
 def move():
@@ -81,44 +112,12 @@ def move():
     if amIHit=='True': #escape the block
         return 'F'
     else:
-        hitNearest(mybot)
+        #hitNearest(mybot)
+        attackFunc(mybot, bots_state)
         return escape_moves[random.randrange(len(escape_moves))]
         
     
-    # func to throw water and attack
-    
-    for player in bots_state:
-        x,y=bots_state[player]
-        direc = bots_state[player]['direction']
-
-        if mybot['x']==x and [x,abs(y-mybot['y'])] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same row and attack dist
-            if mybot['direction']==direc:
-                return 'T'
-            else:
-                mybot['direction']=direc
-                return 'T'
-        
-        elif mybot['x']==x and [x,abs(y+mybot['y'])] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same row opp direc and attack dist
-            if mybot['direction']==direc:
-                return 'T'
-            else:
-                mybot['direction']=direc
-                return 'T'
-
-        elif mybot['y']==y and [abs(x+mybot['x']),y] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same column opp direc and attack dist
-           if mybot['direction']==direc:
-                return 'T'
-            else:
-                mybot['direction']=direc
-                return 'T'
-
-        elif mybot['y']==y and [abs(x-mybot['x']),y] in possible_moves[mybot['direction']['attack_moves']]: #if player is in same column and attack dist
-            if mybot['direction']==direc:
-                return 'T'
-            else:
-                mybot['direction']=direc
-                return 'T'
-                
+    # func to throw water and attack            
 
 #    return moves[random.randrange(len(moves))]
 
