@@ -61,9 +61,11 @@ def move():
             'attack_moves': [[x-1, y], [x-2, y], [x-3, y]],
         },  
     }
-
-    # TODO add your implementation here to replace the random response
+       
+    if amIHit=='True': #escape the block
+        return 'F'
     
+    # func to throw water and attack
     for player in bots_state:
         x,y=bots_state[player]
         dirc = bots_state[player]['direction']
